@@ -5,10 +5,10 @@ export default function Home() {
 
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
-            Created a Base structure for your Next.js app with Tailwind CSS.
+            Created a Base structure for your Next.js app with Tailwind CSS
           </li>
           <li className="tracking-[-.01em]">
-            And it is going to be deployed on Cloudflare.
+            And it is going to be deployed on Cloudflare
           </li>
         </ol>
       </main>
