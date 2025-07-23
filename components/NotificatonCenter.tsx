@@ -20,26 +20,16 @@ import {
   FileText,
   Package
 } from 'lucide-react';
+import { IEShippingNotification } from '@/interfaces/notification.interface';
 
-interface Notification {
-  id: string;
-  type: 'mention' | 'comment' | 'system' | 'action' | 'update';
-  title: string;
-  message: string;
-  poNumber: string;
-  author?: string;
-  timestamp: string;
-  isRead: boolean;
-  priority: 'low' | 'medium' | 'high';
-  actionRequired?: boolean;
-}
 
 interface NotificationCenterProps {
-  notifications: Notification[];
+  notifications: IEShippingNotification[];
   onMarkAsRead: (id: string) => void;
   onMarkAllAsRead: () => void;
   onDeleteNotification: (id: string) => void;
-  onNotificationClick: (notification: Notification) => void;
+  onNotificationClick: (notification: IEShippingNotification) => void;
+  isLoading?: boolean;
 }
 
 const notificationIcons = {

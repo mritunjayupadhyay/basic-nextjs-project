@@ -1,13 +1,17 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
+ type CurrentView = "dashboard" | "create-pst";
+
 interface UIState {
   // Global UI state
   sidebarOpen: boolean;
   theme: 'light' | 'dark';
   activeTab: 'details' | 'communication';
   isPanelOpen: boolean;
-  
+  currentDashboardView: CurrentView;
+  viewModeDashboardShippingList: "timeline" | "table";
+
   // Global loading states (if needed)
   globalLoading: boolean;
   
@@ -17,6 +21,8 @@ interface UIState {
   setActiveTab: (tab: 'details' | 'communication') => void;
   setIsPanelOpen: (open: boolean) => void;
   setGlobalLoading: (loading: boolean) => void;
+  setCurrentDashboardView: (view: CurrentView) => void;
+  setViewModeDashboardShippingList: (viewMode: "timeline" | "table") => void;
 }
 
 export const useUIStore = create<UIState>()(
@@ -27,6 +33,8 @@ export const useUIStore = create<UIState>()(
       activeTab: 'details',
       isPanelOpen: false,
       globalLoading: false,
+      currentDashboardView: 'dashboard',
+      viewModeDashboardShippingList: 'timeline',
       
       setSidebarOpen: (sidebarOpen) => 
         set({ sidebarOpen }, false, 'setSidebarOpen'),
@@ -42,6 +50,10 @@ export const useUIStore = create<UIState>()(
       
       setGlobalLoading: (globalLoading) => 
         set({ globalLoading }, false, 'setGlobalLoading'),
+      setCurrentDashboardView: (currentDashboardView) => 
+        set({ currentDashboardView }, false, 'setCurrentDashboardView'),
+      setViewModeDashboardShippingList: (viewModeDashboardShippingList) => 
+        set({ viewModeDashboardShippingList }, false, 'setViewModeDashboardShippingList'),
     }),
     { name: 'ui-store' }
   )

@@ -9,6 +9,10 @@ import {
 } from "@/components/ui/popover";
 import { Bell, Calendar } from "lucide-react";
 import { useState } from "react";
+import { DashboardHeader } from "./_components/dashboard-header";
+import { PurchaseOrderIntake } from "./_components/purchase-order-intake";
+import { DashboardFilter } from "./_components/dashboard-filter";
+import { ShippingList } from "./_components/shipping-list";
 
 const mockShipments = [
   {
@@ -1134,60 +1138,10 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto space-y-6">
-        <div className="flex items-center justify-between">
-          <div className="space-y-1">
-            <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
-              Shipping Management Dashboard
-            </h1>
-            <div className="flex items-center gap-4">
-              <p className="text-gray-600">
-                Track and manage your logistics operations
-              </p>
-              <div className="flex items-center gap-2 px-3 py-1 bg-green-50 border border-green-200 rounded-full">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-green-700">
-                  All Systems Operational
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            {/* Notification Bell */}
-            <Popover
-              open={isNotificationOpen}
-              onOpenChange={setIsNotificationOpen}
-            >
-              <PopoverTrigger asChild>
-                <Button variant="outline" size="sm" className="relative">
-                  <Bell className="w-4 h-4" />
-                  {unreadNotificationCount > 0 && (
-                    <Badge className="absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center p-0 text-xs">
-                      {unreadNotificationCount > 9
-                        ? "9+"
-                        : unreadNotificationCount}
-                    </Badge>
-                  )}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-96 p-0" align="end">
-                <NotificationCenter
-                  notifications={notifications}
-                  onMarkAsRead={handleMarkNotificationAsRead}
-                  onMarkAllAsRead={handleMarkAllNotificationsAsRead}
-                  onDeleteNotification={handleDeleteNotification}
-                  onNotificationClick={handleNotificationClick}
-                />
-              </PopoverContent>
-            </Popover>
-
-            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 rounded-lg border">
-              <Calendar className="w-4 h-4 text-gray-500" />
-              <span className="text-sm font-medium text-gray-700">
-                Monday, July 14, 2025
-              </span>
-            </div>
-          </div>
-        </div>
+        <DashboardHeader />
+        <PurchaseOrderIntake />
+        <DashboardFilter />
+        <ShippingList /> 
       </div>
     </div>
   );

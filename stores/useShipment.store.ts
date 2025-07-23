@@ -11,7 +11,7 @@ interface ShipmentState {
   };
   
   // Actions
-  selectShipment: (shipment: IEShippingShipment | null) => void;
+  setSelectedShipment: (shipment: IEShippingShipment | null) => void;
   setFilters: (filters: Partial<ShipmentState['shipmentFilters']>) => void;
   clearFilters: () => void;
 }
@@ -26,9 +26,9 @@ export const useShipmentStore = create<ShipmentState>()(
         searchTerm: '',
       },
       
-      selectShipment: (selectedShipment) =>
-        set({ selectedShipment }, false, 'selectShipment'),
-      
+      setSelectedShipment: (selectedShipment) =>
+        set({ selectedShipment }, false, 'setSelectedShipment'),
+
       setFilters: (newFilters) =>
         set(
           (state) => ({

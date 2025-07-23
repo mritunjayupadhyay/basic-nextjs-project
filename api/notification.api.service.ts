@@ -67,3 +67,40 @@ export const fetchNotifications = async (): Promise<IEShippingNotification[]> =>
   await new Promise(resolve => setTimeout(resolve, 1000));
   return mockNotifications;
 };
+
+// Additional API functions for mutations
+export const markNotificationAsReadAPI = async (id: string): Promise<IEShippingNotification> => {
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 500));
+  
+  // Find and update the notification in mock data
+  const notification = mockNotifications.find(n => n.id === id);
+  if (!notification) {
+    throw new Error('Notification not found');
+  }
+  
+  return { ...notification, isRead: true };
+};
+
+export const markAllNotificationsAsReadAPI = async (): Promise<IEShippingNotification[]> => {
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 800));
+  
+  // Update all notifications in mock data
+  const updatedNotifications = mockNotifications.map(n => ({ ...n, isRead: true }));
+  mockNotifications.splice(0, mockNotifications.length, ...updatedNotifications);
+  
+  return updatedNotifications;
+};
+
+export const deleteNotificationAPI = async (id: string): Promise<void> => {
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 300));
+  
+  const index = mockNotifications.findIndex(n => n.id === id);
+  if (index === -1) {
+    throw new Error('Notification not found');
+  }
+  
+  mockNotifications.splice(index, 1);
+};
