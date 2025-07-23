@@ -1031,3 +1031,5 @@ export const fetchShipments = async (): Promise<IEShippingShipment[]> => {
   await new Promise(resolve => setTimeout(resolve, 800));
   return mockShipments;
 };
+
+export const runtime = 'edge';

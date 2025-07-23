@@ -104,3 +104,5 @@ export const deleteNotificationAPI = async (id: string): Promise<void> => {
   
   mockNotifications.splice(index, 1);
 };
+
+export const runtime = 'edge';
