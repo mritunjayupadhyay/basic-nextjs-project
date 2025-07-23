@@ -32,7 +32,7 @@ export const DashboardHeader: React.FC = () => {
     useNotificationStore();
 
   const { setActiveTab, setIsPanelOpen } = useUIStore();
-  const { selectShipment } = useShipmentStore();
+  const { setSelectedShipment } = useShipmentStore();
 
   // Calculate unread count
   const unreadCount = notifications.filter((n) => !n.isRead).length;
@@ -49,7 +49,7 @@ export const DashboardHeader: React.FC = () => {
         (s) => s.poNumber === notification.poNumber
       );
       if (shipment) {
-        selectShipment(shipment);
+        setSelectedShipment(shipment);
         setActiveTab("communication");
         setIsPanelOpen(true);
       }
