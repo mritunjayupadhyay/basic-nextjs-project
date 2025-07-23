@@ -1,6 +1,6 @@
 import { useMutation, useQuery, UseQueryResult, UseMutationResult, useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEYS } from '../query-keys';
-import { deleteNotificationAPI, fetchNotifications, markAllNotificationsAsReadAPI, markNotificationAsReadAPI } from '@/api/notification.api.service';
+import { deleteNotificationAPI, fetchNotifications, markAllNotificationsAsReadAPI, markNotificationAsReadAPI } from '@/api-services/notification.api.service';
 import { IEShippingNotification } from '@/interfaces/notification.interface';
 
 export const useNotifications = (): UseQueryResult<IEShippingNotification[], Error> => {

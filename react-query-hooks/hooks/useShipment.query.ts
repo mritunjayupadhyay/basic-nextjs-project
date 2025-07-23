@@ -1,7 +1,7 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { QUERY_KEYS } from '../query-keys';
 import { IEShippingShipment } from '@/interfaces/shipment.interface';
-import { fetchShipments } from '@/api/shipment.api.service';
+import { fetchShipments } from '@/api-services/shipment.api.service';
 
 export const useShipments = (): UseQueryResult<IEShippingShipment[], Error> => {
   return useQuery({
